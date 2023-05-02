@@ -1,11 +1,15 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { PlacesListComponent } from './places-list/places-list.component';
-import { ActivitiesListComponent } from './activities-list/activities-list.component';
+import { PlacesListComponent } from './components/places/places-list/places-list.component';
+import { ActivitiesListComponent } from './components/activities/activities-list/activities-list.component';
 
-import { RouterModule } from '@angular/router';
+import { ApiHttpService } from './api-http.service';
+
 
 @NgModule({
   declarations: [
@@ -19,8 +23,10 @@ import { RouterModule } from '@angular/router';
       {path: 'places-list', component: PlacesListComponent},
       {path: 'activities-list', component: ActivitiesListComponent},
     ]),
+    HttpClientModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [ApiHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

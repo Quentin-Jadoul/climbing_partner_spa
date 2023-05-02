@@ -1,31 +1,52 @@
-.navbar {
-    color: #fff;
-    border-radius: 0;
-    border: none;
-    margin-bottom: 0;
-    border-bottom: 2px solid #dddee0;
+.navigation-bar {
+    width: 100%;
+    height: 3rem;
+    border-bottom: 2px solid #cacbcf;
 }
-.navbar ul {
-    list-style-type: none;
-    margin: 0;
+.navigation-container {
+    width: 80%;
+    height: 100%;
+    margin: 0 auto;
+}
+.navigation-bar i {
+    font-size: 2rem;
+    color: #785964;
+    vertical-align: middle;
+    line-height: 3rem;
+    display: inline-block;
+    margin-right: 1rem;
+}
+.navigation-bar ul {
     padding: 0;
-    overflow: hidden;
-    padding-left: 200px;
+    margin: 0;
+    text-align: center;
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }
-.navbar li {
-    float: left;
+.navigation-bar li {
+    list-style-type: none;
+    padding: 0;
+    display: inline-block;
+    height: 100%;
 }
-.navbar li a {
-    display: block;
+.navigation-bar li a {
     color: #000;
     text-align: center;
-    padding: 14px 16px;
+    padding: 0px 16px;
     text-decoration: none;
     font-size: 1.5rem;
+    vertical-align: middle;
+    line-height: 3rem;
 }
-.navbar li a:hover {
-    color: #5e74e2;
+.navigation-bar li a:hover {
+    color: #785964;
 }
-.navbar li a.activenavbutton {
-    border-bottom: 4px solid #5e74e2;
+.navigation-bar li.active {
+    border-bottom: 4px solid #785964;
+}
+
+.main {
+    width: 80%;
+    margin: 0 auto;
 }

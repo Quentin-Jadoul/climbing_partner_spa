@@ -1,10 +1,14 @@
 <!-- Main navigation bar -->
-<div class="navbar">
-  <ul>
-    <li><a routerLink="/activities-list" routerLinkActive="activenavbutton">Activities</a></li>
-    <li><a routerLink="/places-list" routerLinkActive="activenavbutton">Places</a></li>
-  </ul>
+<div class="navigation-bar">
+  <div class="navigation-container">
+    <i class="fa-solid fa-mountain fa-2xl"></i>
+    <ul>
+      <li routerLinkActive="active"><a routerLink="/activities-list">Activities</a></li>
+      <li routerLinkActive="active"><a routerLink="/places-list">Places</a></li>
+    </ul>
+  </div>
 </div>
 
-<h1>Home</h1>
-<router-outlet></router-outlet>
+<div class="main">
+  <router-outlet></router-outlet>
+</div>
