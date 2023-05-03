@@ -18,4 +18,8 @@ export class PlacesService {
   getPlaces(size: number, offset: number, type: string, location: string, sort: string, name: string) {
     return this.apiHttpService.get(this.url + '/places?size=' + size + '&offset=' + offset + '&type=' + type + '&location=' + location + '&sort=' + sort + '&name=' + name);
   }
+
+  getPlace(place_id: number) {
+    return this.apiHttpService.get(this.url + '/place/' + place_id);
+  }
 }
