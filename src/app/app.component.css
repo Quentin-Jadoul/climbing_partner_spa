@@ -8,21 +8,33 @@
     height: 100%;
     margin: 0 auto;
 }
-.navigation-bar i {
-    font-size: 2rem;
+.navigation-bar .logo {
+    font-size: 1rem;
     color: #785964;
     vertical-align: middle;
     line-height: 3rem;
     display: inline-block;
     margin-right: 1rem;
 }
-.navigation-bar ul {
-    padding: 0;
-    margin: 0;
-    text-align: center;
+.navigation-bar .navigation-menu {
     display: inline-block;
     height: 100%;
     vertical-align: middle;
+    padding: 0;
+    margin: 0;
+}
+.navigation-bar .navigation-user {
+    vertical-align: middle;
+    padding: 0;
+    margin: 0;
+    float: right;
+}
+
+
+.navigation-bar ul {
+    padding: 0;
+    margin: 0;  
+    height: 100%;
 }
 .navigation-bar li {
     list-style-type: none;

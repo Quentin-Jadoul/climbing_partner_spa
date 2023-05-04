@@ -1,11 +1,75 @@
 <!-- Main navigation bar -->
 <div class="navigation-bar">
   <div class="navigation-container">
-    <i class="fa-solid fa-mountain fa-2xl"></i>
-    <ul>
-      <li routerLinkActive="active"><a routerLink="/activities-list">Activities</a></li>
-      <li routerLinkActive="active"><a routerLink="/places-list">Places</a></li>
-    </ul>
+    <div class="logo">
+      <i class="fa-solid fa-mountain fa-2xl"></i>
+    </div>
+    <div class="navigation-menu">
+      <ul>
+        <li routerLinkActive="active"><a routerLink="/activities-list">Activities</a></li>
+        <li routerLinkActive="active"><a routerLink="/places-list">Places</a></li>
+      </ul>
+    </div>
+    <div class="navigation-user">
+      <ul>
+        <li><a data-bs-toggle="modal" data-bs-target="#loginModal" style="cursor: pointer;">Login</a></li>
+        <li><a data-bs-toggle="modal" data-bs-target="#registerModal" style="cursor: pointer;">Register</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-control" type="email" name="email" id="email">
+          <label class="form-label" for="password">Password</label>
+          <input class="form-control" type="password" name="password" id="password">
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Register Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Register</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form>
+        <div class="modal-body">
+          <label class="form-label" for="firstname">Firstname</label>
+          <input class="form-control" type="text" name="name" id="name">
+          <label class="form-label" for="lastname">Lastname</label>
+          <input class="form-control" type="text" name="lastname" id="lastname">
+          <label class="form-label" for="username">Username</label>
+          <input class="form-control" type="text" name="username" id="username">
+          <label class="form-label" for="email">Email</label>
+          <input class="form-control" type="email" name="email" id="email">
+          <label class="form-label" for="password">Password</label>
+          <input class="form-control" type="password" name="password" id="password">
+          <label class="form-label" for="confirm-password">Confirm Password</label>
+          <input class="form-control" type="confirm-password" name="confirm-password" id="confirm-password">
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 

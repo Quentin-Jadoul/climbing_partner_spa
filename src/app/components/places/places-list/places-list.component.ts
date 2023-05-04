@@ -1,67 +1,64 @@
 import { Component, OnInit } from '@angular/core';
 import { PlacesService } from 'src/app/services/places.service';
 
+
 @Component({
   selector: 'app-places-list',
   templateUrl: './places-list.component.html',
   styleUrls: ['./places-list.component.css']
 })
 export class PlacesListComponent implements OnInit {
+
+  placesPerPage = 10;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
+  currentPage: number = 1;
+  totalPlaces: number = 0;
+
   name: string = '';
   location: string = '';
   type: string = '';
+  sort: string = '';
 
   places: any = [];
 
   constructor(
-    private PlacesService: PlacesService
+    private PlacesService: PlacesService,
+
   ) { }
 
-  currentPage = 1;
-  totalPages = 0;
-  placesPerPage = 10;
-  pageNumbers: number[] = [];
-
-  url = 'http://pat.infolab.ecam.be:60842';
-
   ngOnInit(): void {
-    this.PlacesService.getPlacesCount().subscribe((data: any) => {
-      this.totalPages = Math.ceil(data.count / this.placesPerPage);
-      // we fill the array with the numbers from 1 to totalPages
-      this.pageNumbers = Array(this.totalPages).fill(0).map((x, i) => i + 1);
-      this.showPage(this.currentPage);
+    this.PlacesService.getPlacesCount(this.type, this.location, this.name).subscribe((data: any) => {
+      this.totalPlaces = data.count;
+      this.showPage(1);
     });
   }
 
   onSubmit() {
-    this.PlacesService.getPlaces(this.placesPerPage, this.currentPage - 1, this.type, this.location, '', this.name).subscribe((data: any) => {
+    this.PlacesService.getPlaces(this.placesPerPage, this.currentPage - 1, this.type, this.location, this.sort, this.name).subscribe((data: any) => {
       this.places = data;
+    });
+    this.PlacesService.getPlacesCount(this.type, this.location, this.name).subscribe((data: any) => {
+      this.totalPlaces = data.count;
     });
   }
 
   showPage(pageNumber: number) {
     this.currentPage = pageNumber;
-    this.PlacesService.getPlaces(this.placesPerPage, this.currentPage - 1, this.type, this.location, '', this.name).subscribe((data: any) => {
+    this.PlacesService.getPlaces(this.placesPerPage, this.currentPage - 1, this.type, this.location, this.sort, this.name).subscribe((data: any) => {
       this.places = data;
     });
   }
 
-  goToPage(pageNumber: number) {
-    console.log(pageNumber)
-    this.currentPage = pageNumber;
-    this.showPage(this.currentPage);
+  onPageChange(event: any) {
+    this.placesPerPage = event.pageSize;
+    this.showPage(event.pageIndex + 1);
   }
 
-  prevPage() {
-    if (this.currentPage > 1) {
-      this.goToPage(this.currentPage - 1);
-    }
-  }
-
-  nextPage() {
-    console.log('nextPage')
-    if (this.currentPage < this.totalPages) {
-      this.goToPage(this.currentPage + 1);
-    }
+  sortData(event: any) {
+    this.sort = event
+    this.PlacesService.getPlaces(this.placesPerPage, this.currentPage - 1, this.type, this.location, this.sort, this.name).subscribe((data: any) => {
+      this.places = data;
+      this.currentPage = 1;
+    });
   }
 }

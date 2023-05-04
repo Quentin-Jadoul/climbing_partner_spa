@@ -1,1 +1,73 @@
-<p>place works!</p>
+<h1>{{place.name}}</h1>
+<div class="card">
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card-body">
+            <h5 class="card-title">Location</h5>
+            <p class="card-text">{{place.location}}</p>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card-body">
+            <h5 class="card-title">Type</h5>
+            <p class="card-text">{{place.type}}</p>
+            </div>
+        </div>
+    </div>
+</div> 
+<h2>Boulders</h2>
+<form class="rounded_box" (ngSubmit)="onSubmit()">
+    <div class="row align-items-end">
+        <div class="col-sm-3">
+            <label class="form-label" for="minGrade">Min Grade</label>
+            <select class="form-select" name="minGrade" id="minGrade" [(ngModel)]="minGrade">
+                <option value="">All</option>
+                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <label class="form-label" for="maxGrade">Max Grade</label>
+            <select class="form-select" name="maxGrade" id="maxGrade" [(ngModel)]="maxGrade">
+                <option value="">All</option>
+                <option *ngFor="let grade of grades" [value]="grade">{{grade}}</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <label class="form-label" for="status">Status</label>
+            <select class="form-select" name="status" id="status" [(ngModel)]="status">
+                <option value="">All</option>
+                <option value="true">Present</option>
+                <option value="false">Removed</option>
+            </select>
+        </div>
+        <div class="col-sm-2 ">
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+</form>
+<table id="place-boulders-table" class="table table-striped table-bordered" cellSpacing="0" width="100%">
+    <thead>
+        <tr>
+            <th class="th-sm col-sm-3">Name</th>
+            <th class="th-sm col-sm-3">Grade</th>
+            <th class="th-sm col-sm-3">Type</th>
+            <th class="th-sm col-sm-3">State</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let boulder of boulders">
+            <td>{{ boulder.name }}</td>
+            <td>{{ boulder.grade }}</td>
+            <td>{{ boulder.type }}</td>
+            <td>{{ boulder.status ? 'present' : 'removed' }}</td>
+            <td><a [routerLink]="['/place/', place.place_id]"><i class="fas fa-circle-info"></i></a></td>
+        </tr>
+    </tbody>
+</table>
+
+<mat-paginator
+  [length]="totalBoulders"
+  [pageSize]="bouldersPerPage"
+  [pageSizeOptions]="pageSizeOptions"
+  (page)="onPageChange($event)"
+></mat-paginator>

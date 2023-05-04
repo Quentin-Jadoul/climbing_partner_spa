@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'climbing_partner_spa';
+  public current = 1;
+  public total = 10;
 }

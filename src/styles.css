@@ -5,10 +5,12 @@ body {
   padding: 0;
   background-color: #f5f5f5;
 }
-.search-filters {
+.rounded_box {
   margin-bottom: 20px;
   padding: 10px;
   background-color: #f5f5f5;
   border-radius: 5px;
   border: 1px solid #ddd;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

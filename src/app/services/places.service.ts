@@ -10,8 +10,8 @@ export class PlacesService {
 
   url = 'http://pat.infolab.ecam.be:60842';
 
-  getPlacesCount() {
-    return this.apiHttpService.get(this.url + '/places/count');
+  getPlacesCount(type: string, location: string, name: string) {
+    return this.apiHttpService.get(this.url + '/places/count?type=' + type + '&location=' + location + '&name=' + name);
   }
 
   // getPlaces takes parameters to filter the results

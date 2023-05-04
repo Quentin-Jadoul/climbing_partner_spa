@@ -14,6 +14,9 @@ import { BoulderCreateComponent } from './components/boulders/boulder-create/bou
 import { BoulderUpdateComponent } from './components/boulders/boulder-update/boulder-update.component';
 import { BouldersListComponent } from './components/boulders/boulders-list/boulders-list.component';
 import { ActivitiesListComponent } from './components/activities/activities-list/activities-list.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -38,6 +41,8 @@ import { ActivitiesListComponent } from './components/activities/activities-list
     ]),
     HttpClientModule,
     FormsModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule
   ],
   providers: [ApiHttpService],
   bootstrap: [AppComponent]
