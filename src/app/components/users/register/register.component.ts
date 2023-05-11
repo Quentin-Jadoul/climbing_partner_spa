@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ApiHttpService } from '../../../api-http.service';
 import { UsersService } from '../../../services/users.service';
 
 @Component({
@@ -29,6 +28,11 @@ export class RegisterComponent {
       this.usersService.register(this.user.firstname, this.user.lastname, this.user.email, this.user.username, this.user.password).subscribe({
         next: () => {
           document.getElementById('closeModal')?.click();
+          this.usersService.login(this.user.username, this.user.password).subscribe({
+            next: (response: any) => {
+              localStorage.setItem('token', response.token);
+            }
+          });
         },
         error: (error) => {
           if (!error.error.emailAvailable && !error.error.usernameAvailable) {

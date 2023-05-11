@@ -13,7 +13,7 @@ export class UsersService {
   }
 
   login(username: string, password: string) {
-    return this.apiHttpService.post('/user/login', { username: username, password: password });
+    return this.apiHttpService.post('/login', { username: username, password: password });
   }
 
 }

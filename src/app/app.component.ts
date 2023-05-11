@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RegisterComponent } from './components/users/register/register.component';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +10,20 @@ export class AppComponent {
   public current = 1;
   public total = 10;
 
-  hero = {name: ''};
+  token: any = null;
+
+  constructor() { }
+  
+  ngOnInit() {
+    this.token = localStorage.getItem('token');
+  }
+  
+  ngDoCheck() {
+    this.token = localStorage.getItem('token');
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.token = null;
+  }
 }

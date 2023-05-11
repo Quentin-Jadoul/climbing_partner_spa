@@ -1,33 +1,3 @@
-<!-- Register Modal -->
-<!-- <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Register</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form #myForm="ngForm" (ngSubmit)="onSubmit()" class="needs-validation">
-        <input type="text" id="name" name="name" class="form-control" required minlength="4" appForbiddenName="bob"
-          [(ngModel)]="hero.name" #nameInput="ngModel" [ngClass]="{'is-invalid': nameInput.invalid && (nameInput.dirty || nameInput.touched)}">
-      
-        <div class="invalid-feedback">
-          <div *ngIf="nameInput.errors?.['required']">
-            Name is required.
-          </div>
-          <div *ngIf="nameInput.errors?.['minlength']">
-            Name must be at least 4 characters long.
-          </div>
-          <div *ngIf="nameInput.errors?.['forbiddenName']">
-            Name cannot be Bob.
-          </div>
-        </div>
-        
-        <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Submit</button>
-      </form>
-    </div>
-  </div>
-</div> -->
-
 <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
