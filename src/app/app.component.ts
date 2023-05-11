@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RegisterComponent } from './components/users/register/register.component';
 
 @Component({
   selector: 'app-root',

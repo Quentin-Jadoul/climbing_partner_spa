@@ -41,6 +41,8 @@ export class PlaceComponent implements OnInit {
   }
 
   onSubmit() {
+    this.minGrade = encodeURIComponent(this.minGrade);
+    this.maxGrade = encodeURIComponent(this.maxGrade);
     this.BouldersService.getBouldersByPlace(this.place_id, this.bouldersPerPage, this.currentPage - 1, this.minGrade, this.maxGrade, this.type, this.status).subscribe((data: any) => {
       this.boulders = data;
     });

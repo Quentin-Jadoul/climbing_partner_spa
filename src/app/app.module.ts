@@ -17,6 +17,8 @@ import { ActivitiesListComponent } from './components/activities/activities-list
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { LoginComponent } from './components/users/login/login.component';
+import { RegisterComponent } from './components/users/register/register.component';
 
 
 
@@ -31,10 +33,13 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     BoulderUpdateComponent,
     BouldersListComponent,
     ActivitiesListComponent,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot([
+      {path: '', redirectTo: 'activities-list', pathMatch: 'full'},
       {path: 'places-list', component: PlacesListComponent},
       {path: 'place/:id', component: PlaceComponent},
       {path: 'activities-list', component: ActivitiesListComponent},

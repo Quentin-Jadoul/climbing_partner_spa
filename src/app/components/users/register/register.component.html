@@ -1,0 +1,38 @@
+<!-- Register Modal -->
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Register</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form (ngSubmit)="onSubmit()">
+          <div class="modal-body">
+            <label class="form-label" for="firstname">Firstname</label>
+            <input class="form-control" type="text" name="name" id="name" value="test" [(ngModel)]="name" required>
+
+            <label class="form-label" for="lastname">Lastname</label>
+            <input class="form-control" type="text" name="lastname" id="lastname" [(ngModel)]="lastname">
+
+            <label class="form-label" for="username">Username</label>
+            <input class="form-control" type="text" name="username" id="username" [(ngModel)]="username">
+            <label class="form-error" *ngIf="usernameTaken">Username already taken</label>
+
+            <label class="form-label" for="email">Email</label>
+            <input class="form-control" type="email" name="email" id="email" [(ngModel)]="email">
+            <label class="form-error" *ngIf="emailTaken">Email already taken</label>
+
+            <label class="form-label" for="password">Password</label>
+            <input class="form-control" type="password" name="password" id="password" [(ngModel)]="password">
+
+            <label class="form-label" for="confirm-password">Confirm Password</label>
+            <input class="form-control" type="password" name="confirm-password" id="confirm-password" [(ngModel)]="password2">
+            <label class="form-error" *ngIf="passwordError.length > 0">{{ passwordError }}</label>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

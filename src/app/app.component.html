@@ -19,59 +19,8 @@
   </div>
 </div>
 
-<!-- Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form>
-        <div class="modal-body">
-          <label class="form-label" for="email">Email</label>
-          <input class="form-control" type="email" name="email" id="email">
-          <label class="form-label" for="password">Password</label>
-          <input class="form-control" type="password" name="password" id="password">
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Login</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
-<!-- Register Modal -->
-<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Register</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form>
-        <div class="modal-body">
-          <label class="form-label" for="firstname">Firstname</label>
-          <input class="form-control" type="text" name="name" id="name">
-          <label class="form-label" for="lastname">Lastname</label>
-          <input class="form-control" type="text" name="lastname" id="lastname">
-          <label class="form-label" for="username">Username</label>
-          <input class="form-control" type="text" name="username" id="username">
-          <label class="form-label" for="email">Email</label>
-          <input class="form-control" type="email" name="email" id="email">
-          <label class="form-label" for="password">Password</label>
-          <input class="form-control" type="password" name="password" id="password">
-          <label class="form-label" for="confirm-password">Confirm Password</label>
-          <input class="form-control" type="confirm-password" name="confirm-password" id="confirm-password">
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Register</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
+<app-register></app-register>
+<app-login></app-login>
 
 <div class="main">
   <router-outlet></router-outlet>
