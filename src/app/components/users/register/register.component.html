@@ -1,38 +1,72 @@
 <!-- Register Modal -->
-<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Register</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <form (ngSubmit)="onSubmit()">
-          <div class="modal-body">
-            <label class="form-label" for="firstname">Firstname</label>
-            <input class="form-control" type="text" name="name" id="name" value="test" [(ngModel)]="name" required>
-
-            <label class="form-label" for="lastname">Lastname</label>
-            <input class="form-control" type="text" name="lastname" id="lastname" [(ngModel)]="lastname">
-
-            <label class="form-label" for="username">Username</label>
-            <input class="form-control" type="text" name="username" id="username" [(ngModel)]="username">
-            <label class="form-error" *ngIf="usernameTaken">Username already taken</label>
-
-            <label class="form-label" for="email">Email</label>
-            <input class="form-control" type="email" name="email" id="email" [(ngModel)]="email">
-            <label class="form-error" *ngIf="emailTaken">Email already taken</label>
-
-            <label class="form-label" for="password">Password</label>
-            <input class="form-control" type="password" name="password" id="password" [(ngModel)]="password">
-
-            <label class="form-label" for="confirm-password">Confirm Password</label>
-            <input class="form-control" type="password" name="confirm-password" id="confirm-password" [(ngModel)]="password2">
-            <label class="form-error" *ngIf="passwordError.length > 0">{{ passwordError }}</label>
-          </div>
-          <div class="modal-footer">
-            <button type="submit" class="btn btn-primary">Register</button>
-          </div>
-        </form>
+<!-- <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Register</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <form #myForm="ngForm" (ngSubmit)="onSubmit()" class="needs-validation">
+        <input type="text" id="name" name="name" class="form-control" required minlength="4" appForbiddenName="bob"
+          [(ngModel)]="hero.name" #nameInput="ngModel" [ngClass]="{'is-invalid': nameInput.invalid && (nameInput.dirty || nameInput.touched)}">
+      
+        <div class="invalid-feedback">
+          <div *ngIf="nameInput.errors?.['required']">
+            Name is required.
+          </div>
+          <div *ngIf="nameInput.errors?.['minlength']">
+            Name must be at least 4 characters long.
+          </div>
+          <div *ngIf="nameInput.errors?.['forbiddenName']">
+            Name cannot be Bob.
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Submit</button>
+      </form>
     </div>
   </div>
+</div> -->
+
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Register</h1>
+        <button type="button" id="closeModal" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form #myForm="ngForm" (ngSubmit)="onSubmit()" class="needs-validation">
+        <div class="modal-body">
+          <label class="form-label" for="firstname">Firstname</label>
+          <input class="form-control" type="text" name="firstname" id="firstname" [(ngModel)]="user.firstname" required #firstnameInput="ngModel" [ngClass]="{'is-invalid': firstnameInput.invalid && (firstnameInput.dirty || firstnameInput.touched)}">
+
+          <label class="form-label" for="lastname">Lastname</label>
+          <input class="form-control" type="text" name="lastname" id="lastname" [(ngModel)]="user.lastname" required #lastnameInput="ngModel" [ngClass]="{'is-invalid': lastnameInput.invalid && (lastnameInput.dirty || lastnameInput.touched)}">
+
+          <label class="form-label" for="username">Username</label>
+          <input class="form-control" type="text" name="username" id="username" [(ngModel)]="user.username" required #usernameInput="ngModel" [ngClass]="{'is-invalid': usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)}">
+
+          <label class="form-label" for="email">Email</label>
+          <input class="form-control" type="email" name="email" id="email" [(ngModel)]="user.email" required #emailInput="ngModel" [ngClass]="{'is-invalid': emailInput.invalid && (emailInput.dirty || emailInput.touched)}">
+
+          <label class="form-label" for="password">Password</label>
+          <input class="form-control" type="password" name="password" id="password" [(ngModel)]="user.password" required
+            #passwordInput="ngModel" [ngClass]="{'is-invalid': passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)}">
+
+          <label class="form-label" for="confirm-password">Confirm Password</label>
+          <input class="form-control" type="password" name="confirm-password" id="confirm-password" [(ngModel)]="user.password2" required 
+            #password2Input="ngModel" [ngClass]="{'is-invalid': password2Input.invalid && (password2Input.dirty || password2Input.touched)}">
+
+          <div *ngIf="passwordError.length > 0" style="color: red;">
+            {{passwordError}}
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <!-- Submit button, disabled if form is invalid -->
+          <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

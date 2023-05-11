@@ -8,18 +8,12 @@ export class UsersService {
 
   constructor(private apiHttpService: ApiHttpService) { }
 
-  url = 'http://pat.infolab.ecam.be:60842';
-
-  checkEmail(email: string) {
-    return this.apiHttpService.get(this.url + '/user/check/email/' + email);
+  register(firstname: string, lastname: string, email: string, username: string, password: string) {
+    return this.apiHttpService.post('/user', { firstname: firstname, lastname: lastname, email: email, username: username, password: password });
   }
 
-  checkUsername(username: string) {
-    return this.apiHttpService.get(this.url + '/user/check/username/' + username);
-  }
-
-  register(name: string, email: string, username: string, password: string) {
-    return this.apiHttpService.post(this.url + '/user/register', { name: name, email: email, username: username, password: password });
+  login(username: string, password: string) {
+    return this.apiHttpService.post('/user/login', { username: username, password: password });
   }
 
 }
