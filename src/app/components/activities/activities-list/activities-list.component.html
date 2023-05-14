@@ -1,15 +1,15 @@
-<h1>Activities</h1>
 <!-- We create a card for each activity in the list -->
-<div class="card" *ngFor="let activity of activities">
-    <div class="card-body">
-        <h5 class="card-title">{{ activity.name }}</h5>
-        <p class="card-text">{{ activity.description }}</p>
-        <!-- display the duration in hour and minutes -->
-        <p class="card-text">Duration: {{ activity.duration / 60 | number: '1.0-0' }}h {{ activity.duration % 60 | number: '2.0-0' }}min</p>
-    </div>
-    <!-- display date in a human readable format -->
-    <div class="card-footer text-muted">{{ activity.date | date: 'dd/MM/yyyy' }}</div>
+<div class="card" *ngFor="let activity of activities" style="margin: 10px 0;">
+  <div class="card-body">
+    <h5 class="card-title">{{ activity.user.username }}</h5>
+    <h5 class="card-subtitle">{{ activity.name }}</h5>
+    <p class="card-text">{{ activity.description }}</p>
+    <!-- display the duration in hour and minutes -->
+    <p class="card-text">Duration: {{ activity.duration / 60 | number: '1.0-0' }}h {{ activity.duration % 60 | number: '2.0-0' }}min</p>
   </div>
+    <!-- display date in a human readable format -->
+  <div class="card-footer text-muted">{{ activity.date | date: 'dd/MM/yyyy' }}</div>
+</div>
 
 <!-- We use the variable declared in the component to set the number of items per page -->
 <mat-paginator

@@ -14,8 +14,9 @@ import { BoulderCreateComponent } from './components/boulders/boulder-create/bou
 import { BoulderUpdateComponent } from './components/boulders/boulder-update/boulder-update.component';
 import { BouldersListComponent } from './components/boulders/boulders-list/boulders-list.component';
 import { ActivitiesListComponent } from './components/activities/activities-list/activities-list.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserActivitiesComponent } from './components/activities/user-activities/user-activities.component';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { LoginComponent } from './components/users/login/login.component';
 import { RegisterComponent } from './components/users/register/register.component';
@@ -37,6 +38,7 @@ import { MyInterceptor } from './my-interceptor';
     ActivitiesListComponent,
     LoginComponent,
     RegisterComponent,
+    UserActivitiesComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ import { MyInterceptor } from './my-interceptor';
       {path: 'places-list', component: PlacesListComponent},
       {path: 'place/:id', component: PlaceComponent},
       {path: 'activities-list', component: ActivitiesListComponent},
+      {path: 'user-activities', component: UserActivitiesComponent},
     ]),
     HttpClientModule,
     FormsModule,
