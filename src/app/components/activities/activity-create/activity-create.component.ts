@@ -21,6 +21,7 @@ export class ActivityCreateComponent {
   time = {hour: 0, minute: 0};
 
   place_id: number = 0;
+  activity_id: number = 0;
 
   places = [
     {
@@ -28,6 +29,8 @@ export class ActivityCreateComponent {
       name: ''
     },
   ];
+
+  step = 0;
 
   placesPerPage = 10;
   currentPage: number = 1;
@@ -45,7 +48,6 @@ export class ActivityCreateComponent {
   ngOnInit(): void {
     this.PlacesService.getPlacesNames().subscribe((data: any) => {
       this.places = data;
-      console.log(this.places)
     });
   }
   
@@ -55,6 +57,9 @@ export class ActivityCreateComponent {
     this.activity.duration = String(Number(this.activity.duration.split(':')[0]) * 60 + Number(this.activity.duration.split(':')[1]));
     // We combine date and time and convert to ISO format
     this.activity.date = new Date(this.activity.date + 'T' + this.time_string + ':00').toISOString();
-    this.ActivitiesService.createActivity(this.activity).subscribe((data: any) => {});
+    this.ActivitiesService.createActivity(this.activity).subscribe((data: any) => {
+      this.activity_id = data.activity_id;
+      this.step = 1;
+    });
   }
 }

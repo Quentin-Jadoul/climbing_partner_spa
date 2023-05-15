@@ -2,7 +2,7 @@
 <!-- We need to fill the name, description, date and time and duration -->
 <!-- We also need to select a place from the list of places -->
 <h1>New activity</h1>
-<div class="rounded_box">
+<div class="rounded_box" *ngIf="step == 0">
     <h2>Activity details</h2>
     <form>
         <div class="form-group">
@@ -31,11 +31,7 @@
                 <option *ngFor="let place of places" [value]="place.place_id">{{ place.name }}</option>
             </select>
         </div>
-        <!-- <button type="submit" class="btn btn-primary" (click)="createActivity()">Next</button> -->
     </form>
 </div>
-<div class="rounded_box">
-    <h2>Climbs</h2>
-    <!-- We display the list of climbs -->
-    <app-climbs-list></app-climbs-list>
-</div>
+<button *ngIf="step == 0" type="submit" class="btn btn-primary" (click)="createActivity()">Next</button>
+<app-climbs-list *ngIf="step == 1"></app-climbs-list>
