@@ -24,6 +24,9 @@ export class AppComponent {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user_id');
     this.token = null;
+    // We reload the page to refresh the navbar
+    window.location.reload();
   }
 }

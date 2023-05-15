@@ -9,7 +9,11 @@ export class ActivitiesService {
   constructor(private apiHttpService: ApiHttpService) { }
 
   getActivitiesCount() {
-    return this.apiHttpService.get('/activities/count');
+    return this.apiHttpService.get('/activities/count?user_id=');
+  }
+
+  getActivitiesByUserCount() {
+    return this.apiHttpService.get('/activities/count?user_id=' + localStorage.getItem('user_id'));
   }
 
   // getActivities takes parameters to filter the results
@@ -19,5 +23,21 @@ export class ActivitiesService {
 
   getActivity(activity_id: number) {
     return this.apiHttpService.get('/activity/' + activity_id);
+  }
+
+  getActivitiesByUser(size: number, offset: number) {
+    if (localStorage.getItem('user_id') === null) {
+      // we return an empty array
+      return this.apiHttpService.get('/activities?size=0&offset=0');
+    }
+    return this.apiHttpService.get('/activities?size=' + size + '&offset=' + offset + '&user_id=' + localStorage.getItem('user_id'));
+  }
+
+  createActivity(activity: any) {
+    return this.apiHttpService.post('/activity', activity);
+  }
+
+  deleteActivity(activity_id: number) {
+    return this.apiHttpService.delete('/activity/' + activity_id);
   }
 }

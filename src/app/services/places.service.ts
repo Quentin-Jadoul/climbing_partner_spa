@@ -20,4 +20,8 @@ export class PlacesService {
   getPlace(place_id: number) {
     return this.apiHttpService.get('/place/' + place_id);
   }
+
+  getPlacesNames() {
+    return this.apiHttpService.get('/places/names');
+  }
 }

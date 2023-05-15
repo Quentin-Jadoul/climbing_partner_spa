@@ -5,7 +5,7 @@
     <h5 class="card-subtitle">{{ activity.name }}</h5>
     <p class="card-text">{{ activity.description }}</p>
     <!-- display the duration in hour and minutes -->
-    <p class="card-text">Duration: {{ activity.duration / 60 | number: '1.0-0' }}h {{ activity.duration % 60 | number: '2.0-0' }}min</p>
+    <p class="card-text">Duration: {{ (activity.duration - activity.duration % 60 ) / 60 | number: '1.0-0' }}h{{ activity.duration % 60 | number: '2.0-0' }} min</p>
   </div>
     <!-- display date in a human readable format -->
   <div class="card-footer text-muted">{{ activity.date | date: 'dd/MM/yyyy' }}</div>

@@ -19,14 +19,14 @@ export class LoginComponent {
     this.usersService.login(this.username, this.password).subscribe({
       next: (response: any) => {
         document.getElementById('closeLoginModal')?.click();
-        // We store the token in the localStorage
+        localStorage.setItem('user_id', response.user_id);
         localStorage.setItem('token', response.token);
+        window.location.reload();
       },
       error: (error) => {
         this.errorMessage = error.error.message;
       }
     });
+    // We reload the page to refresh the navbar
   }
-
-
 }
