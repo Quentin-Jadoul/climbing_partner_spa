@@ -11,7 +11,7 @@
         <tbody>
             <tr *ngFor="let climb of climbs">
                 <td>{{ climb.name }}</td>
-                <td>{{ climb.nd_attempts }}</td>
+                <td>{{ climb.nb_attempts }}</td>
                 <td>{{ climb.style }}</td>
             </tr>
             <tr>
@@ -25,4 +25,4 @@
     </table>
 </div>
 
-<app-climb-create></app-climb-create>
+<app-climb-create (climbCreated)="climbCreated()" [activity_id]="activity_id"></app-climb-create>

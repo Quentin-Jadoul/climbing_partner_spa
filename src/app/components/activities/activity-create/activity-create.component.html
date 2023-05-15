@@ -34,4 +34,4 @@
     </form>
 </div>
 <button *ngIf="step == 0" type="submit" class="btn btn-primary" (click)="createActivity()">Next</button>
-<app-climbs-list *ngIf="step == 1"></app-climbs-list>
+<app-climbs-list [activity_id]="activity_id" *ngIf="step == 1"></app-climbs-list>

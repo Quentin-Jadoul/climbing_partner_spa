@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ClimbsService } from 'src/app/services/climbs.service';
-import { OnInit } from '@angular/core';
 import { BouldersService } from 'src/app/services/boulders.service';
 
 @Component({
@@ -9,6 +8,8 @@ import { BouldersService } from 'src/app/services/boulders.service';
   styleUrls: ['./climb-create.component.css']
 })
 export class ClimbCreateComponent implements OnInit {
+  @Input() activity_id: number = 0;
+  @Output() climbCreated = new EventEmitter<any>();
 
   constructor(
     private ClimbsService: ClimbsService,
@@ -16,14 +17,13 @@ export class ClimbCreateComponent implements OnInit {
   ) { }
 
   climb = {
+    activity_id: this.activity_id,
     boulder_id: 1,
     nb_attempts: 0,
     nb_success: 0,
-    style: '',
-    activity_id: 1
+    style: ''
   };
 
-  activity_id: number = 1;
   boulders: any = [];
 
   boulder_name: string = '';
@@ -37,8 +37,9 @@ export class ClimbCreateComponent implements OnInit {
   }
 
   onSubmit() {
+    this.climb.activity_id = this.activity_id;
     this.ClimbsService.createClimb(this.climb).subscribe((data: any) => {
-      this.ngOnInit();
+      this.climbCreated.emit();
     });
   }
 

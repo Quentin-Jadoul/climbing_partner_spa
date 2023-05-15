@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ClimbsService } from 'src/app/services/climbs.service';
-import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-climbs-list',
@@ -8,16 +7,22 @@ import { OnInit } from '@angular/core';
   styleUrls: ['./climbs-list.component.css']
 })
 export class ClimbsListComponent implements OnInit {
+  @Input() activity_id: number = 0;
 
   constructor(
     private ClimbsService: ClimbsService,
   ) { }
 
   climbs: any = [];
-  activity_id: number = 1;
 
   ngOnInit(): void {
-    this.ClimbsService.getClimbsByActivityId(1).subscribe((data: any) => {
+    this.ClimbsService.getClimbsByActivityId(this.activity_id).subscribe((data: any) => {
+      this.climbs = data;
+    });
+  }
+
+  climbCreated() {
+    this.ClimbsService.getClimbsByActivityId(this.activity_id).subscribe((data: any) => {
       this.climbs = data;
     });
   }
