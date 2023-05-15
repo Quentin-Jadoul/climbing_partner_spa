@@ -1,31 +1,37 @@
 <!-- Main navigation bar -->
-<div class="navigation-bar">
-  <div class="navigation-container">
-    <div class="logo">
-      <i class="fa-solid fa-mountain fa-2xl"></i>
+<div *ngIf="token">
+  <div class="navigation-bar">
+    <div class="navigation-container">
+      <div class="logo">
+        <i class="fa-solid fa-mountain fa-2xl"></i>
+      </div>
+      <div class="navigation-menu">
+        <ul>
+          <li routerLinkActive="active"><a routerLink="/activities-list">Home</a></li>
+          <li routerLinkActive="active"><a routerLink="/user-activities">Activities</a></li>
+          <li routerLinkActive="active"><a routerLink="/places-list">Places</a></li>
+        </ul>
+      </div>
+      <div class="navigation-user">
+        <ul>
+          <!-- If the local storage has a token, we show the logout button, otherwise we show a login and register button -->
+          <li><a (click)="logout()">Logout</a></li>
+        </ul>
+      </div>
     </div>
-    <div class="navigation-menu">
-      <ul>
-        <li routerLinkActive="active"><a routerLink="/activities-list">Home</a></li>
-        <li routerLinkActive="active"><a routerLink="/user-activities">Activities</a></li>
-        <li routerLinkActive="active"><a routerLink="/places-list">Places</a></li>
-      </ul>
-    </div>
-    <div class="navigation-user">
-      <ul>
-        <!-- If the local storage has a token, we show the logout button, otherwise we show a login and register button -->
-        <li *ngIf="token"><a (click)="logout()">Logout</a></li>
-        <li *ngIf="!token"><a id="openLoginModal" data-bs-toggle="modal" data-bs-target="#loginModal" style="cursor: pointer;">Login</a></li>
-        <li *ngIf="!token"><a data-bs-toggle="modal" data-bs-target="#registerModal" style="cursor: pointer;">Register</a></li>
-      </ul>
-    </div>
+  </div>
+  <div class="main">
+    <router-outlet></router-outlet>
   </div>
 </div>
 
-<app-register></app-register>
-<app-login></app-login>
-
-
-<div class="main">
-  <router-outlet></router-outlet>
+<div *ngIf="!token">
+  <div class="rounded_box">
+    <div *ngIf="state == 'login'">
+      <app-login [childValue]="state" (valueChanged)="onChildValueChange($event)"></app-login>
+  </div>
+  <div *ngIf="state == 'register'">
+    <app-register [childValue]="state" (valueChanged)="onChildValueChange($event)"></app-register>
+  </div>
 </div>
+

@@ -1,42 +1,39 @@
-<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Register</h1>
-        <button type="button" id="closeModal" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form #myForm="ngForm" (ngSubmit)="onSubmit()" class="needs-validation">
-        <div class="modal-body">
-          <label class="form-label" for="firstname">Firstname</label>
-          <input class="form-control" type="text" name="firstname" id="firstname" [(ngModel)]="user.firstname" required #firstnameInput="ngModel" [ngClass]="{'is-invalid': firstnameInput.invalid && (firstnameInput.dirty || firstnameInput.touched)}">
+<div class="register-container">
+  <form #myForm="ngForm" (ngSubmit)="onSubmit()" class="needs-validation">
+    <label class="form-label" for="firstname">Firstname</label>
+    <input class="form-control" type="text" name="firstname" id="firstname" [(ngModel)]="user.firstname" required #firstnameInput="ngModel" [ngClass]="{'is-invalid': firstnameInput.invalid && (firstnameInput.dirty || firstnameInput.touched)}">
 
-          <label class="form-label" for="lastname">Lastname</label>
-          <input class="form-control" type="text" name="lastname" id="lastname" [(ngModel)]="user.lastname" required #lastnameInput="ngModel" [ngClass]="{'is-invalid': lastnameInput.invalid && (lastnameInput.dirty || lastnameInput.touched)}">
+    <label class="form-label" for="lastname">Lastname</label>
+    <input class="form-control" type="text" name="lastname" id="lastname" [(ngModel)]="user.lastname" required #lastnameInput="ngModel" [ngClass]="{'is-invalid': lastnameInput.invalid && (lastnameInput.dirty || lastnameInput.touched)}">
 
-          <label class="form-label" for="username">Username</label>
-          <input class="form-control" type="text" name="username" id="username" [(ngModel)]="user.username" required #usernameInput="ngModel" [ngClass]="{'is-invalid': usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)}">
+    <label class="form-label" for="username">Username</label>
+    <input class="form-control" type="text" name="username" id="username" [(ngModel)]="user.username" required #usernameInput="ngModel" [ngClass]="{'is-invalid': usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)}">
 
-          <label class="form-label" for="email">Email</label>
-          <input class="form-control" type="email" name="email" id="email" [(ngModel)]="user.email" required #emailInput="ngModel" [ngClass]="{'is-invalid': emailInput.invalid && (emailInput.dirty || emailInput.touched)}">
+    <label class="form-label" for="email">Email</label>
+    <input class="form-control" type="email" name="email" id="email" [(ngModel)]="user.email" required #emailInput="ngModel" [ngClass]="{'is-invalid': emailInput.invalid && (emailInput.dirty || emailInput.touched)}">
 
-          <label class="form-label" for="password">Password</label>
-          <input class="form-control" type="password" name="password" id="password" [(ngModel)]="user.password" required
-            #passwordInput="ngModel" [ngClass]="{'is-invalid': passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)}">
+    <label class="form-label" for="password">Password</label>
+    <input class="form-control" type="password" name="password" id="password" [(ngModel)]="user.password" required
+      #passwordInput="ngModel" [ngClass]="{'is-invalid': passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)}">
 
-          <label class="form-label" for="confirm-password">Confirm Password</label>
-          <input class="form-control" type="password" name="confirm-password" id="confirm-password" [(ngModel)]="user.password2" required 
-            #password2Input="ngModel" [ngClass]="{'is-invalid': password2Input.invalid && (password2Input.dirty || password2Input.touched)}">
+    <label class="form-label" for="confirm-password">Confirm Password</label>
+    <input class="form-control" type="password" name="confirm-password" id="confirm-password" [(ngModel)]="user.password2" required 
+      #password2Input="ngModel" [ngClass]="{'is-invalid': password2Input.invalid && (password2Input.dirty || password2Input.touched)}">
 
-          <div *ngIf="passwordError.length > 0" style="color: red;">
-            {{passwordError}}
-          </div>
-          
-        </div>
-        <div class="modal-footer">
-          <!-- Submit button, disabled if form is invalid -->
-          <button type="submit" class="btn btn-primary" [disabled]="myForm.invalid">Submit</button>
-        </div>
-      </form>
+    <div *ngIf="passwordError.length > 0" style="color: red;">
+      {{passwordError}}
     </div>
-  </div>
+    
+    <!-- Submit button, disabled if form is invalid -->
+    <div class="row">
+      <div class="col-sm-6">
+        <button type="submit" class="btn btn-primary">Register</button>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <p class="link-text" (click)="login()">Login</p>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>

@@ -1,29 +1,25 @@
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
-        <button type="button" id="closeLoginModal" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <form #myForm="ngForm" (ngSubmit)="onSubmit()" class="needs-validation">
-        <div class="modal-body">
-          <label class="form-label" for="username">Username</label>
-          <input class="form-control" type="text" name="username" id="username" [(ngModel)]="username" required #usernameInput="ngModel" [ngClass]="{'is-invalid': usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)}">
-
-          <label class="form-label" for="password">Password</label>
-          <input class="form-control" type="password" name="password" id="password" [(ngModel)]="password" required
-            #passwordInput="ngModel" [ngClass]="{'is-invalid': passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)}">
-
-          <div *ngIf="errorMessage.length > 0" style="color: red;">
-            {{errorMessage}}
-          </div>
-          
-        </div>
-        <div class="modal-footer">
-          <!-- Submit button, disabled if form is invalid -->
-          <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-      </form>
+<div class="login-container">
+  <form (ngSubmit)="onSubmit()" class="needs-validation">
+    <label class="form-label" for="username">Username</label>
+    <input class="form-control" type="text" name="username" id="username" [(ngModel)]="username" required #usernameInput="ngModel" [ngClass]="{'is-invalid': usernameInput.invalid && (usernameInput.dirty || usernameInput.touched)}">
+    
+    <label class="form-label" for="password">Password</label>
+    <input class="form-control" type="password" name="password" id="password" [(ngModel)]="password" required
+    #passwordInput="ngModel" [ngClass]="{'is-invalid': passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)}">
+    
+    <div *ngIf="errorMessage.length > 0" style="color: red;">
+      {{errorMessage}}
     </div>
-  </div>
+    <!-- Submit button, disabled if form is invalid -->
+    <div class="row">
+      <div class="col-sm-6">
+        <button type="submit" class="btn btn-primary">Login</button>
+      </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <p class="link-text" (click)="register()">Register</p>
+      </div>
+    </div>
+    </div>
+  </form>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { UsersService } from '../../../services/users.service';
 
 @Component({
@@ -7,6 +7,14 @@ import { UsersService } from '../../../services/users.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent {
+  @Input() childValue: string = '';
+  @Output() valueChanged = new EventEmitter<string>();
+
+  login() {
+    this.childValue = 'login';
+    this.valueChanged.emit(this.childValue);
+  }
+
   password: string = '';
   user = {
     firstname: '',

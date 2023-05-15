@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { UsersService } from 'src/app/services/users.service';
 
 @Component({
@@ -7,6 +7,8 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
+  @Input() childValue: string = '';
+  @Output() valueChanged = new EventEmitter<string>();
 
   constructor( private usersService: UsersService) { }
 
@@ -28,5 +30,10 @@ export class LoginComponent {
       }
     });
     // We reload the page to refresh the navbar
+  }
+
+  register() {
+    this.childValue = 'register';
+    this.valueChanged.emit(this.childValue);
   }
 }

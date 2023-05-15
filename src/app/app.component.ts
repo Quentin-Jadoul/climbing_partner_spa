@@ -12,6 +12,8 @@ export class AppComponent {
 
   token: any = null;
 
+  state = 'login'
+
   constructor() { }
   
   ngOnInit() {
@@ -28,5 +30,9 @@ export class AppComponent {
     this.token = null;
     // We reload the page to refresh the navbar
     window.location.reload();
+  }
+
+  onChildValueChange(newValue: string) {
+    this.state = newValue;
   }
 }

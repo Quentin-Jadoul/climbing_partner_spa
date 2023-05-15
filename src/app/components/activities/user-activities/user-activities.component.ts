@@ -16,22 +16,11 @@ export class UserActivitiesComponent implements OnInit {
 
   activities: any = [];
 
-  token: any = null;
-
   constructor(
     private ActivitiesService: ActivitiesService,
   ) { }
 
-  // If the user is not logged, we open the login modal when he tries to access the activities page
-  openLoginModal() {
-    document.getElementById('openLoginModal')?.click();
-  }
-
   ngOnInit(): void {
-    if (localStorage.getItem('user_id') == null) {
-      this.openLoginModal();
-    }
-    this.token = localStorage.getItem('token');
     this.ActivitiesService.getActivitiesByUserCount().subscribe((data: any) => {
       this.totalActivities = data.count;
       this.showPage(1);
