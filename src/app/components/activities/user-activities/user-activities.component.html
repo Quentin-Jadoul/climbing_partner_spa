@@ -18,7 +18,7 @@
             <td>{{ activity.date | date: 'dd/MM/yyyy' }}</td>
             <td>{{ (activity.duration - activity.duration % 60 ) / 60 | number: '1.0-0' }}h{{ activity.duration % 60 | number: '2.0-0' }} min</td>
             <td><a [routerLink]="['/activity/', activity.activity_id]"><i class="fas fa-circle-info"></i></a></td>
-            <td><a [routerLink]="['/activity/edit/', activity.activity_id]"><i class="fas fa-pen"></i></a></td>
+            <td><a [routerLink]="['/activity/update/', activity.activity_id]"><i class="fas fa-pen"></i></a></td>
             <td><a (click)="deleteActivity(activity.activity_id)"><i class="fas fa-trash"></i></a></td>
         </tr>
     </tbody>

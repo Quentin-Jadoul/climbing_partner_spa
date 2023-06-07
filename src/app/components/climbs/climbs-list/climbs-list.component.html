@@ -16,7 +16,7 @@
                 <td>{{ climb.nb_attempts }}</td>
                 <td>{{ climb.style }}</td>
             </tr>
-            <tr>
+            <tr *ngIf="!show">
                 <td colspan="12">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createClimb">
                         Add climb

@@ -32,6 +32,7 @@ import { ClimbDetailsComponent } from './components/climbs/climb-details/climb-d
 import { ClimbUpdateComponent } from './components/climbs/climb-update/climb-update.component';
 import { ClimbCreateComponent } from './components/climbs/climb-create/climb-create.component';
 import { ClimbDeleteComponent } from './components/climbs/climb-delete/climb-delete.component';
+import { ActivityDetailsComponent } from './components/activities/activity-details/activity-details.component';
 
 
 
@@ -56,6 +57,7 @@ import { ClimbDeleteComponent } from './components/climbs/climb-delete/climb-del
     ClimbUpdateComponent,
     ClimbCreateComponent,
     ClimbDeleteComponent,
+    ActivityDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +68,8 @@ import { ClimbDeleteComponent } from './components/climbs/climb-delete/climb-del
       {path: 'activities-list', component: ActivitiesListComponent},
       {path: 'user-activities', component: UserActivitiesComponent},
       {path: 'activity/create', component: ActivityCreateComponent},
+      {path: 'activity/update/:id', component: ActivityUpdateComponent},
+      {path: 'activity/:id', component: ActivityDetailsComponent},
     ]),
     HttpClientModule,
     FormsModule,

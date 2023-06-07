@@ -10,6 +10,7 @@ import { BouldersService } from 'src/app/services/boulders.service';
 export class ClimbsListComponent implements OnInit {
   @Input() activity_id: number = 0;
   @Input() place_id: number = 0;
+  @Input() show: boolean = false;
 
   constructor(
     private ClimbsService: ClimbsService,

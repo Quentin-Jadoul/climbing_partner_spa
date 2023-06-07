@@ -1,0 +1,16 @@
+<a [routerLink]="['/user-activities']" class="btn btn-primary" style="margin-bottom: 20px;"><i class="fas fa-arrow-left"></i></a>
+<div class="rounded_box">
+    <h2>{{activity.name}}</h2>
+
+    <div class="col-sm-12">
+        <p>{{activity.date | date:'EEEE dd MMMM yyyy'}} at {{activity.date | date:'HH:mm'}}</p>
+    </div>
+    <div class="col-sm-12">
+        <p>{{activity.description}}</p>
+    </div>
+    <div class="col-sm-12">
+        <p>{{(activity.duration -  activity.duration % 60 ) / 60}} hours and {{activity.duration % 60}} minutes</p>
+    </div>
+</div>
+<app-climbs-list [activity_id]="activity_id" [show]="true"></app-climbs-list>
+
