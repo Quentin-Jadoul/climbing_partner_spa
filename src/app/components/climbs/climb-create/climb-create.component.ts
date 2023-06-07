@@ -9,6 +9,7 @@ import { BouldersService } from 'src/app/services/boulders.service';
 })
 export class ClimbCreateComponent implements OnInit {
   @Input() activity_id: number = 0;
+  @Input() place_id: number = 0;
   @Output() climbCreated = new EventEmitter<any>();
 
   constructor(
@@ -28,15 +29,15 @@ export class ClimbCreateComponent implements OnInit {
 
   boulder_name: string = '';
 
-  place_id: number = 1;
-
   ngOnInit(): void {
+    console.log(this.activity_id);
     this.BouldersService.getBouldersByPlaceV2(this.place_id).subscribe((data: any) => {
       this.boulders = data;
     });
   }
 
   onSubmit() {
+    console.log(this.climb);
     this.climb.activity_id = this.activity_id;
     this.ClimbsService.createClimb(this.climb).subscribe((data: any) => {
       this.climbCreated.emit();

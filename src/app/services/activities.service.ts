@@ -9,7 +9,7 @@ export class ActivitiesService {
   constructor(private apiHttpService: ApiHttpService) { }
 
   getActivitiesCount() {
-    return this.apiHttpService.get('/activities/count?user_id=');
+    return this.apiHttpService.get('/activities/count');
   }
 
   getActivitiesByUserCount() {

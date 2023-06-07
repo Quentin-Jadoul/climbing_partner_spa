@@ -53,8 +53,10 @@ export class ActivityCreateComponent {
   
   
   createActivity() {
-    // convert durationt to minutes, we split the string and convert to number
-    this.activity.duration = String(Number(this.activity.duration.split(':')[0]) * 60 + Number(this.activity.duration.split(':')[1]));
+    // We retrieve the place_id from the selected place
+    console.log(this.place_id);
+
+
     // We combine date and time and convert to ISO format
     this.activity.date = new Date(this.activity.date + 'T' + this.time_string + ':00').toISOString();
     this.ActivitiesService.createActivity(this.activity).subscribe((data: any) => {

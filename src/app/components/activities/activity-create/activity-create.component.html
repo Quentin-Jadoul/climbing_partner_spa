@@ -23,7 +23,7 @@
         </div>
         <div class="form-group">
             <label for="duration">Duration</label>
-            <input type="time" class="form-control" [(ngModel)]="activity.duration" name="duration" id="duration" placeholder="Duration in minutes">
+            <input type="number" class="form-control" [(ngModel)]="activity.duration" name="duration" id="duration" placeholder="Duration in minutes">
         </div>
         <div class="form-group">
             <label for="place">Place</label>
@@ -34,4 +34,7 @@
     </form>
 </div>
 <button *ngIf="step == 0" type="submit" class="btn btn-primary" (click)="createActivity()">Next</button>
-<app-climbs-list [activity_id]="activity_id" *ngIf="step == 1"></app-climbs-list>
+<app-climbs-list [activity_id]="activity_id" [place_id]="place_id" *ngIf="step == 1"></app-climbs-list>
+
+<a *ngIf="step == 1" [routerLink]="['/user-activities']" class="btn btn-primary" style="margin-bottom: 20px;">Complete</a>
+

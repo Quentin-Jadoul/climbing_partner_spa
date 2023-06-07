@@ -4,18 +4,20 @@
         <thead>
             <tr>
                 <th class="th-sm col-sm-3">Boulder</th>
+                <th class="th-sm col-sm-3">Grade</th>
                 <th class="th-sm col-sm-3">Attempts</th>
                 <th class="th-sm col-sm-3">Style</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let climb of climbs">
-                <td>{{ climb.name }}</td>
+                <td>{{ climb.boulder_name }}</td>
+                <td>{{ climb.boulder_grade }}</td>
                 <td>{{ climb.nb_attempts }}</td>
                 <td>{{ climb.style }}</td>
             </tr>
             <tr>
-                <td colspan="3">
+                <td colspan="12">
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createClimb">
                         Add climb
                     </button>
@@ -25,4 +27,4 @@
     </table>
 </div>
 
-<app-climb-create (climbCreated)="climbCreated()" [activity_id]="activity_id"></app-climb-create>
+<app-climb-create (climbCreated)="climbCreated()" [activity_id]="activity_id" [place_id]="place_id"></app-climb-create>

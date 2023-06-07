@@ -20,5 +20,9 @@ export class BouldersService {
     return this.apiHttpService.get('/boulders/place/' + place_id + '/count?minGrade=' + minGrade + '&maxGrade=' + maxGrade + '&type=' + type + '&status=' + status);
   }
 
+  getBoulder(boulder_id: number) {
+    return this.apiHttpService.get('/boulder/' + boulder_id);
+  }
+
 
 }
