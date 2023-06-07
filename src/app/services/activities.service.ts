@@ -6,7 +6,9 @@ import { ApiHttpService } from '../api-http.service';
 })
 export class ActivitiesService {
 
-  constructor(private apiHttpService: ApiHttpService) { }
+  constructor(
+    private apiHttpService: ApiHttpService,
+  ) { }
 
   getActivitiesCount() {
     return this.apiHttpService.get('/activities/count');
@@ -35,6 +37,10 @@ export class ActivitiesService {
 
   createActivity(activity: any) {
     return this.apiHttpService.post('/activity', activity);
+  }
+
+  updateActivity(activity_id: number, activity: any) {
+    return this.apiHttpService.patch('/activity/' + activity_id, activity);
   }
 
   deleteActivity(activity_id: number) {

@@ -32,14 +32,6 @@ export class ActivityCreateComponent {
 
   step = 0;
 
-  placesPerPage = 10;
-  currentPage: number = 1;
-
-  name: string = '';
-  location: string = '';
-  type: string = '';
-  sort: string = '';
-
   constructor(
     private PlacesService: PlacesService,
     private ActivitiesService: ActivitiesService,
@@ -53,10 +45,6 @@ export class ActivityCreateComponent {
   
   
   createActivity() {
-    // We retrieve the place_id from the selected place
-    console.log(this.place_id);
-
-
     // We combine date and time and convert to ISO format
     this.activity.date = new Date(this.activity.date + 'T' + this.time_string + ':00').toISOString();
     this.ActivitiesService.createActivity(this.activity).subscribe((data: any) => {

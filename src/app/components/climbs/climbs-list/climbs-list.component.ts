@@ -20,8 +20,6 @@ export class ClimbsListComponent implements OnInit {
   climbs: any = [];
 
   ngOnInit(): void {
-    console.log(this.activity_id);
-    console.log(this.place_id);
     this.ClimbsService.getClimbsByActivityId(this.activity_id).subscribe((data: any) => {
       // for each climb, get the boulder name
       this.climbs = data;

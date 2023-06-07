@@ -30,14 +30,12 @@ export class ClimbCreateComponent implements OnInit {
   boulder_name: string = '';
 
   ngOnInit(): void {
-    console.log(this.activity_id);
     this.BouldersService.getBouldersByPlaceV2(this.place_id).subscribe((data: any) => {
       this.boulders = data;
     });
   }
 
   onSubmit() {
-    console.log(this.climb);
     this.climb.activity_id = this.activity_id;
     this.ClimbsService.createClimb(this.climb).subscribe((data: any) => {
       this.climbCreated.emit();
