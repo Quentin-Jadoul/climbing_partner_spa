@@ -15,4 +15,16 @@ export class ClimbsService {
   createClimb(climb: any) {
     return this.apiHttpService.post('/climb', climb);
   }
+
+  deleteClimb(climbId: number) {
+    return this.apiHttpService.delete('/climb/' + climbId);
+  }
+
+  updateClimb(climbId: number, climb: any) {
+    return this.apiHttpService.patch('/climb/' + climbId, climb);
+  }
+
+  getClimb(climbId: number) {
+    return this.apiHttpService.get('/climb/' + climbId);
+  }
 }

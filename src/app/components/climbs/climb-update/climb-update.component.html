@@ -1,1 +1,32 @@
-<p>climb-update works!</p>
+<div class="modal fade" id="updateClimbModal" tabindex="-1" aria-labelledby="updateClimbLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Update climb</h1>
+          <button type="button" id="closeClimbModal" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form #myForm="ngForm" (ngSubmit)="onSubmit()" class="needs-validation">
+          <div class="modal-body">
+            <label for="boulder">Boulder</label>
+            <select class="form-control" [(ngModel)]="climb.boulder_id" name="boulder" id="boulder">
+                <option *ngFor="let boulder of boulders" [value]="boulder.boulder_id">{{ boulder.name }}</option>
+            </select>
+            <label for="tries">Attempts</label>
+            <input class="form-control" type="number" name="tries" id="tries" [(ngModel)]="climb.nb_attempts" required #triesInput="ngModel" [ngClass]="{'is-invalid': triesInput.invalid && (triesInput.dirty || triesInput.touched)}">
+            <label for="style">Style</label>
+            <select class="form-control" [(ngModel)]="climb.style" name="style" id="style">
+                <option value="onsight">Onsight</option>
+                <option value="flash">Flash</option>
+                <option value="redpoint">Redpoint</option>
+                <option value="repeat">Repeat</option>
+                <option value="attempts">Attempts</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <!-- Submit button, disabled if form is invalid -->
+            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
